@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {ServiceService} from './service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+  data:any
+  constructor(private service: ServiceService){
+    this.service.getData().subscribe(data=>{
+      console.warn(data);
+      this.data = data
+    })
+  }
 }
